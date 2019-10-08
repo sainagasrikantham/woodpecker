@@ -1,2 +1,2 @@
-# woodpecker
-Renaming tool for Plex
+# Woodpecker
+A simple command line renaming tool for Plex.
