@@ -1,5 +1,15 @@
 package com.woodpecker.service;
 
-public class WoodpeckerCore {
+import java.util.List;
 
+public class WoodpeckerCore {
+    private List<String> arguments;
+    
+    public WoodpeckerCore(List<String> arguments) {
+        this.arguments = arguments;
+    }
+
+    List<String> getArguments() {
+        return arguments;
+    }
 }
