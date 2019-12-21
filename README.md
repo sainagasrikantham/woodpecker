@@ -3,6 +3,8 @@ A simple command line folder renaming tool for Plex.
 
 # Usage
 
+Download the `.jar` file from the repo right here, or if you're a geek, you can build the latest codebase via the command `gradle clean build`. No points for guessing, you're going to need [gradle](https://gradle.org/).
+
 ## Plex Mode
 
 Once you have your directories in a style that resembles `test.directory.1984`, you can run `Woodpecker` in `plexmode` and get those renamed in a style that Plex prefers. For example, `Test Directory (1984)`. Please report any bugs.
