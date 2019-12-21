@@ -14,7 +14,7 @@ Command to run:
 
 ## Future Enhancements
 
-The project is tracked on (this Trello board)[https://trello.com/b/fqPBCv7F/woodpecker]. Please provide feedback, and suggest future enhancements. I do have a day job, so _enhancements_ will come slowly.
+The project is tracked on [this Trello board](https://trello.com/b/fqPBCv7F/woodpecker). Please provide feedback, and suggest future enhancements. I do have a day job, so _enhancements_ will come slowly.
 
 ## Donations
 
