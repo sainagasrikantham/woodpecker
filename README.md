@@ -18,4 +18,4 @@ The project is tracked on [this Trello board](https://trello.com/b/fqPBCv7F/wood
 
 ## Donations
 
-Coming soon! Totally free for now!
+[PayPal.me](paypal.me/sainagasrikantham)
