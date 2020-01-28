@@ -22,7 +22,6 @@ public class TestApp {
         Runtime.getRuntime().exec("mkdir ./testroot/test.1979");
     }
 
-    // Write some tests
     @Test
     public void testHello() {
         String processingPath = WoodpeckerUtil.getProcessingPath(Arrays.asList("--path", "./testroot"));
