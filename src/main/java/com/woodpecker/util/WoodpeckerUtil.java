@@ -22,6 +22,7 @@ public class WoodpeckerUtil {
                 builder.append(" ");
             }
         }
+
         return builder.toString();
     }
 
