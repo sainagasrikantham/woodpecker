@@ -12,6 +12,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'junit:junit:4.13.1'
+
     // Regular
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
     compileOnly group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.29'
@@ -30,9 +32,9 @@ jar {
         attributes 'Main-Class': 'com.woodpecker.main.WoodpeckerApp'
     }
 
-    from {
-        configurations.compileOnly.collect { it.isDirectory() ? it : zipTree(it) }
-    }
+//    from {
+//        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//    }
 }
 
 //task showMeCache {

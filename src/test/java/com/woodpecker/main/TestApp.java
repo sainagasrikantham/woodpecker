@@ -1,6 +1,5 @@
 package com.woodpecker.main;
 
-import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,10 +8,11 @@ import java.util.List;
 
 import com.woodpecker.processor.WoodpeckerPlexModeProcessor;
 import com.woodpecker.util.WoodpeckerUtil;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.assertTrue;
 
 public class TestApp {
 
