@@ -11,7 +11,7 @@ Once you have your directories in a style that resembles `test.directory.1984`, 
 
 Command to run:
 ```
-> java -jar woodpecker-1.0-SNAPSHOT.jar --plexmode
+> java -jar woodpecker-1.0.jar --plexmode
 ```
 
 ## Future Enhancements
