@@ -3,7 +3,7 @@ package com.woodpecker.processor;
 import java.io.File;
 import java.util.List;
 
-public class WoodpeckerTrimProcessor implements WoodpeckerArgProcessor {
+public class WoodpeckerTrimProcessor implements WoodpeckerProcessor {
 
     @Override
     public void process(List<File> filesToProcess) {

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import com.woodpecker.processor.WoodpeckerInteractiveProcessor;
 import com.woodpecker.processor.WoodpeckerPlexModeProcessor;
 import com.woodpecker.util.WoodpeckerUtil;
 import org.junit.AfterClass;
@@ -23,7 +24,7 @@ public class TestApp {
     }
 
     @Test
-    public void testHello() {
+    public void testHappyPath() {
         String processingPath = WoodpeckerUtil.getProcessingPath(Arrays.asList("--path", "./testroot"));
         File[] dirContents = WoodpeckerUtil.getDirectoryContents(processingPath);
         List<File> directories = WoodpeckerUtil.getDirectories(dirContents);
@@ -31,7 +32,20 @@ public class TestApp {
         WoodpeckerPlexModeProcessor.getInstance().process(directories);
         dirContents = WoodpeckerUtil.getDirectoryContents(processingPath);
         directories = WoodpeckerUtil.getDirectories(dirContents);
-        assertTrue("Test.1979 Exists", directories.contains(new File("./testroot/Test (1979)")));
+        assertTrue("Test (1979) Exists", directories.contains(new File("./testroot/Test (1979)")));
+    }
+
+    @Test
+    public void testTextAfterYear() throws IOException {
+        Runtime.getRuntime().exec("mkdir ./testroot2/test.1980.abc.def.124");
+        String processingPath = WoodpeckerUtil.getProcessingPath(Arrays.asList("--path", "./testroot2"));
+        File[] dirContents = WoodpeckerUtil.getDirectoryContents(processingPath);
+        List<File> directories = WoodpeckerUtil.getDirectories(dirContents);
+        assertTrue("Test.1980 Exists", directories.contains(new File("./testroot2/test.1980.abc.def.124")));
+        WoodpeckerInteractiveProcessor.getInstance().process(directories);
+        dirContents = WoodpeckerUtil.getDirectoryContents(processingPath);
+        directories = WoodpeckerUtil.getDirectories(dirContents);
+        assertTrue("Test (1980) Exists", directories.contains(new File("./testroot/Test (1980)")));
     }
 
     @AfterClass

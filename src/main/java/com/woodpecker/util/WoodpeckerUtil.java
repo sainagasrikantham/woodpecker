@@ -26,6 +26,27 @@ public class WoodpeckerUtil {
         return builder.toString();
     }
 
+    public static String getPlexStyleDirNameV2(String oldDirName) {
+        String[] nameParts = oldDirName.split("\\" + WoodpeckerConstants.CURRENT_DIRECTORY);
+        StringBuilder builder = new StringBuilder();
+
+        for (String part : nameParts) {
+            try {
+                if (Integer.parseInt(part) >= 0) {
+                    builder.append("(" + part + ")");
+                    break; // We ignore all parts after a "year" is found
+                }
+            } catch (NumberFormatException e) {
+                part = part.toLowerCase();
+                part = part.substring(0, 1).toUpperCase() + part.substring(1);
+                builder.append(part);
+                builder.append(" ");
+            }
+        }
+
+        return builder.toString();
+    }
+
     public static String getProcessingPath(List<String> arguments) {
         String processingPath = (arguments != null && arguments.contains(WoodpeckerConstants.ARG_PATH))
                 ? arguments.get(arguments.indexOf(WoodpeckerConstants.ARG_PATH) + 1)

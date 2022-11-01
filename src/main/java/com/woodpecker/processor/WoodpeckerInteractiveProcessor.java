@@ -1,25 +1,26 @@
 package com.woodpecker.processor;
 
-import com.woodpecker.util.WoodpeckerConstants;
-import com.woodpecker.util.WoodpeckerUtil;
-
 import java.io.File;
 import java.util.List;
 
-public class WoodpeckerPlexModeProcessor implements WoodpeckerProcessor {
+import com.woodpecker.util.WoodpeckerConstants;
+import com.woodpecker.util.WoodpeckerUtil;
 
-    private static WoodpeckerPlexModeProcessor plexModeProcessor = null;
-    private WoodpeckerPlexModeProcessor() {
+public class WoodpeckerInteractiveProcessor implements WoodpeckerProcessor {
+
+    private static WoodpeckerInteractiveProcessor interactiveProcessor = null;
+    private WoodpeckerInteractiveProcessor() {
         // Private Constructor
     }
 
     public static WoodpeckerProcessor getInstance() {
-        if (plexModeProcessor == null) {
-            plexModeProcessor = new WoodpeckerPlexModeProcessor();
+        if (interactiveProcessor == null) {
+            interactiveProcessor = new WoodpeckerInteractiveProcessor();
         }
 
-        return plexModeProcessor;
+        return interactiveProcessor;
     }
+
     @Override
     public void process(List<File> directoriesToProcess) {
         Integer totalDirectories = directoriesToProcess.size();
@@ -31,8 +32,12 @@ public class WoodpeckerPlexModeProcessor implements WoodpeckerProcessor {
             if (name.contains(WoodpeckerConstants.CURRENT_DIRECTORY)) {
                 System.out.println(String.format("Now Processing Directory (%d/%d) : %s", ++currentNumber, totalDirectories, name));
                 String outputDirectoryName = absolutePath + WoodpeckerUtil.getPlexStyleDirName(name);
-                File newName = new File(outputDirectoryName);
-                d.renameTo(newName);
+                System.out.println(String.format("New directory name will be : \"%s\". Proceed (y/n)?", WoodpeckerUtil.getPlexStyleDirNameV2(name)));
+                String input = System.console().readLine();
+                if (input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y")) {
+                    File newName = new File(outputDirectoryName);
+                    d.renameTo(newName);
+                }
             }
         }
     }
