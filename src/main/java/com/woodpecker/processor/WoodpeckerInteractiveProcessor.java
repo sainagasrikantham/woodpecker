@@ -8,7 +8,9 @@ import com.woodpecker.util.WoodpeckerUtil;
 
 public class WoodpeckerInteractiveProcessor implements WoodpeckerProcessor {
 
+    private Boolean withUserInput;
     private static WoodpeckerInteractiveProcessor interactiveProcessor = null;
+
     private WoodpeckerInteractiveProcessor() {
         // Private Constructor
     }
@@ -16,9 +18,16 @@ public class WoodpeckerInteractiveProcessor implements WoodpeckerProcessor {
     public static WoodpeckerProcessor getInstance() {
         if (interactiveProcessor == null) {
             interactiveProcessor = new WoodpeckerInteractiveProcessor();
+            interactiveProcessor.withUserInput = true;
         }
 
         return interactiveProcessor;
+    }
+
+    @Override
+    public WoodpeckerProcessor withUserInput(Boolean withUserInput) {
+        this.withUserInput = withUserInput;
+        return this;
     }
 
     @Override
@@ -31,14 +40,24 @@ public class WoodpeckerInteractiveProcessor implements WoodpeckerProcessor {
             absolutePath = absolutePath.replace(name, "");
             if (name.contains(WoodpeckerConstants.CURRENT_DIRECTORY)) {
                 System.out.println(String.format("Now Processing Directory (%d/%d) : %s", ++currentNumber, totalDirectories, name));
-                String outputDirectoryName = absolutePath + WoodpeckerUtil.getPlexStyleDirName(name);
-                System.out.println(String.format("New directory name will be : \"%s\". Proceed (y/n)?", WoodpeckerUtil.getPlexStyleDirNameV2(name)));
-                String input = System.console().readLine();
-                if (input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y")) {
-                    File newName = new File(outputDirectoryName);
-                    d.renameTo(newName);
+                String outputDirectoryName = absolutePath + WoodpeckerUtil.getPlexStyleDirNameV2(name);
+
+                if (this.withUserInput) {
+                    System.out.println(String.format("New directory name will be : \"%s\". Proceed (y/n)?", WoodpeckerUtil.getPlexStyleDirNameV2(name)));
+                    String input = System.console().readLine();
+
+                    if (input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y")) {
+                        rename(d, outputDirectoryName);
+                    }
+                } else {
+                    rename(d, outputDirectoryName);
                 }
             }
         }
+    }
+
+    private void rename(File d, String outputDirectoryName) {
+        File newName = new File(outputDirectoryName);
+        d.renameTo(newName);
     }
 }

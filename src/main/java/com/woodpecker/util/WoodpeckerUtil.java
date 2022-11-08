@@ -30,7 +30,8 @@ public class WoodpeckerUtil {
         String[] nameParts = oldDirName.split("\\" + WoodpeckerConstants.CURRENT_DIRECTORY);
         StringBuilder builder = new StringBuilder();
 
-        for (String part : nameParts) {
+        for (int i=0; i <nameParts.length; ++i) {
+            String part = nameParts[i];
             try {
                 if (Integer.parseInt(part) >= 0) {
                     builder.append("(" + part + ")");

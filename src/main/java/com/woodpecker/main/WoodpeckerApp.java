@@ -11,6 +11,7 @@ import com.woodpecker.util.WoodpeckerUtil;
 
 public class WoodpeckerApp {
     public static final String HELP_TEXT = " Please refer to the usage README or use the --help argument.\n";
+    public static final Integer MAX_ARGS = 2;
 
     static void printHelpText() {
         System.out.println("\nThe allowed arguments are --path, --plexmode, --peck and --interactive."+ HELP_TEXT);
@@ -34,7 +35,7 @@ public class WoodpeckerApp {
         if (arguments.contains(WoodpeckerConstants.ARG_HELP)) {
             printHelpText();
         } else if (arguments.contains(WoodpeckerConstants.ARG_INTERACTIVE)) {
-            if (arguments.size() > 2) {
+            if (arguments.size() > MAX_ARGS) {
                 System.out.println(String.format("You cannot use %s along with other arguments. %s", WoodpeckerConstants.ARG_INTERACTIVE, HELP_TEXT));
                 return;
             }
@@ -43,7 +44,7 @@ public class WoodpeckerApp {
             WoodpeckerInteractiveProcessor.getInstance()
                 .process(WoodpeckerUtil.getDirectories(listOfFiles));
         } else if(arguments.contains(WoodpeckerConstants.ARG_PLEX_MODE)) {
-            if (arguments.size() > 2) {
+            if (arguments.size() > MAX_ARGS) {
                 System.out.println(String.format("You cannot use %s along with other arguments. %s", WoodpeckerConstants.ARG_PLEX_MODE, HELP_TEXT));
                 return;
             }

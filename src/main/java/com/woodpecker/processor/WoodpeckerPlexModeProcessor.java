@@ -7,7 +7,6 @@ import java.io.File;
 import java.util.List;
 
 public class WoodpeckerPlexModeProcessor implements WoodpeckerProcessor {
-
     private static WoodpeckerPlexModeProcessor plexModeProcessor = null;
     private WoodpeckerPlexModeProcessor() {
         // Private Constructor
